@@ -1,0 +1,25 @@
+<p>
+  heros works!
+  <input type="text" [(ngModel)]="hero.name">
+  {{hero.name | uppercase}}
+</p>
+
+<div *ngIf="selectedHero">
+<h2>{{selectedHero.name | uppercase}} Details</h2>
+<div><span>id: </span>{{selectedHero.id}}</div>
+</div>
+
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
+
+
+<ul>
+  <!--第一种写法-->
+  <li *ngFor="let item of heroes" (click)="onSelect(item)" [ngClass]="{'selected': item === selectedHero}">
+    <a routerLink="/detail/{{item.id}}">{{item.id}} --- {{item.name}}</a>
+  </li>
+  <!--第二种写法-->
+  <!--<li *ngFor="let item of heroes" (click)="onSelect(item)" [class.selected]="item === selectedHero">-->
+    <!--{{item.id}} -&#45;&#45; {{item.name}}-->
+  <!--</li>-->
+</ul>
+
